@@ -1,7 +1,8 @@
 
 FROM ubuntu:trusty
 
-RUN apt-get -y update && apt-get install -y openjdk-7-jre-headless wget zookeeperd
+RUN apt-get -y update && apt-get install -y openjdk-7-jre-headless wget zookeeperd \
+    python2.7 libsvn-dev libapr1-dev # Aurora dependencies
 RUN echo manual > /etc/init/zookeeper.override
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
