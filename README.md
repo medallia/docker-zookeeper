@@ -1,4 +1,4 @@
-# Docker image to start a Zookeeper node
+# Docker image to start a Zookeeper 3.4.6 node
 
 Starts Zookeeper, by default getting the configuration present in /opt/zookeeper/conf/zoo.cfg
 
