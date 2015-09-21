@@ -8,6 +8,8 @@ RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.6/zookee
     && mv /usr/share/zookeeper-3.4.6 /usr/share/zookeeper \
     && mkdir -p /tmp/zookeeper
 
+COPY /zoo.cfg /opt/zookeeper/conf/zoo.cfg
+
 ENV ZOO_LOG4J_PROP INFO,CONSOLE
 
 EXPOSE 2181 2888 3888
