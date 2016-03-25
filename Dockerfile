@@ -14,6 +14,8 @@ EXPOSE 2181 2888 3888
 
 WORKDIR /opt/zookeeper
 
+ADD conf/zoo.cfg /opt/zookeeper/conf/zoo.cfg
+
 VOLUME ["/opt/zookeeper", "/tmp/zookeeper"]
 
 ENTRYPOINT ["/usr/share/zookeeper/bin/zkServer.sh"]
