@@ -12,11 +12,14 @@ ENV ZOO_LOG4J_PROP INFO,CONSOLE
 
 EXPOSE 2181 2888 3888
 
-WORKDIR /opt/zookeeper
+RUN mkdir /opt/zookeeper
+RUN mkdir /opt/zookeeper/conf
+ADD /conf/zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
-ADD conf/zoo.cfg /opt/zookeeper/conf/zoo.cfg
+WORKDIR /opt/zookeeper
 
 VOLUME ["/opt/zookeeper", "/tmp/zookeeper"]
 
 ENTRYPOINT ["/usr/share/zookeeper/bin/zkServer.sh"]
 CMD ["start-foreground", "/opt/zookeeper/conf/zoo.cfg"]
+
