@@ -9,7 +9,11 @@ if [[ -z $ZK_HOSTS ]]; then
     exit 1
 fi
 
+adduser --uid 64001 --disabled-password --gecos '' zookeeper
+
 IFS=',' read -a HOSTS <<< "${ZK_HOSTS}"
+
+chown -R zookeeper:zookeeper $DATADIR
 
 mkdir -p $DATADIR/conf
 chmod -R a+rwx $DATADIR/conf
@@ -45,4 +49,4 @@ END
 
 mv $DATADIR/conf/zoo.cfg-temp $DATADIR/conf/zoo.cfg
 
-exec /usr/share/zookeeper/bin/zkServer.sh "$@"
+exec gosu zookeeper /usr/share/zookeeper/bin/zkServer.sh "$@"
