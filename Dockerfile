@@ -1,5 +1,5 @@
-
 FROM java:8
+MAINTAINER Cloud Fabric <cloud-fabric@medallia.com>
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk wget \
 	python2.7 libsvn-dev libapr1-dev # Aurora dependencies
