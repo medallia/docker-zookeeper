@@ -1,4 +1,4 @@
-# Docker image to start a Zookeeper 3.4.6 node
+# Docker image to start a Zookeeper  node
 
 Starts Zookeeper, creates  /opt/zookeeper/conf/zoo.cfg and /opt/zookeeper/myid with parameters passed through environment variables.
 The script will calculate myid based on the local ip address and position in the ZK_HOST string.
