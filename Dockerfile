@@ -9,7 +9,9 @@ RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.8/zookee
     && mkdir -p /tmp/zookeeper
 
 ENV ZOO_LOG4J_PROP INFO,CONSOLE
-ENV DATADIR /opt/zookeeper
+ENV DATADIR /opt/zookeeper/data
+ENV LOGDIR /opt/zookeeper/log
+ENV CONFDIR /opt/zookeeper/conf
 ENV CLIENTPORT 2181
 ENV INITLIMIT 5
 ENV SYNCLIMIT 2
