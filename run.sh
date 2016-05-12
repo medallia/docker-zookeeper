@@ -11,12 +11,16 @@ fi
 
 IFS=',' read -a HOSTS <<< "${ZK_HOSTS}"
 
-mkdir -p $DATADIR/conf
-chmod -R a+rwx $DATADIR/conf
+mkdir -p ${CONFDIR}
 
-cat > $DATADIR/conf/zoo.cfg-temp << EOF
+mkdir -p ${DATADIR}
+
+mkdir -p ${LOGDIR}
+
+cat > ${CONFDIR}/zoo.cfg-temp << EOF
 tickTime=2000
 dataDir=${DATADIR}
+dataLogDir=${LOGDIR}
 clientPort=${CLIENTPORT}
 initLimit=${INITLIMIT}
 syncLimit=${SYNCLIMIT}
@@ -27,7 +31,7 @@ counter=1
 MY_ID=""
 for i in "${HOSTS[@]}"; do 
   IFS=: read -r ip port <<< $i 
-  echo "server.$counter=${ip}:2888:3888" >> $DATADIR/conf/zoo.cfg-temp
+  echo "server.$counter=${ip}:2888:3888" >> ${CONFDIR}/zoo.cfg-temp
   if [ "$ip" = "$NET_IP" ]; then
       MY_ID=$counter
   fi
@@ -43,6 +47,6 @@ cat > $DATADIR/myid << END
 $MY_ID
 END
 
-mv $DATADIR/conf/zoo.cfg-temp $DATADIR/conf/zoo.cfg
+mv ${CONFDIR}/zoo.cfg-temp ${CONFDIR}/zoo.cfg
 
 exec /usr/share/zookeeper/bin/zkServer.sh "$@"
