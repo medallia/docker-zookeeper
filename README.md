@@ -13,4 +13,5 @@ Environment variables have defaults, only ZK_HOSTS is required.
        -e ZK_HOSTS=192.168.255.31:2181,192.168.255.32:2181,192.168.255.33 \
        medallia/zookeeper start-foreground /etc/zookeeper.cfg
 
-
+___________________________________________________
+*Copyright 2016 Medallia Inc. All rights reserved*
