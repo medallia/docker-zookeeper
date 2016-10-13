@@ -5,8 +5,7 @@ RUN apt-get update && apt-get install -y openjdk-8-jdk wget \
 	python2.7 libsvn-dev libapr1-dev # Aurora dependencies
 
 RUN wget -q -O - http://apache.mirrors.pair.com/zookeeper/zookeeper-3.4.8/zookeeper-3.4.8.tar.gz | tar -xzf - -C /usr/share \
-    && mv /usr/share/zookeeper-3.4.8 /usr/share/zookeeper \
-    && mkdir -p /tmp/zookeeper
+    && mv /usr/share/zookeeper-3.4.8 /usr/share/zookeeper
 
 ENV ZOO_LOG4J_PROP INFO,CONSOLE
 ENV DATADIR /opt/zookeeper/data
@@ -21,7 +20,7 @@ EXPOSE 2181 2888 3888
 
 WORKDIR /opt/zookeeper
 
-VOLUME ["/opt/zookeeper", "/tmp/zookeeper"]
+VOLUME ["/opt/zookeeper"]
 
 ADD run.sh /
 
